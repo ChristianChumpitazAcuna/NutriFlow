@@ -1,6 +1,7 @@
 package pe.edu.vallegrande.nutriflow.presentation.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.vallegrande.nutriflow.application.service.UserService;
 import pe.edu.vallegrande.nutriflow.domain.model.User;
@@ -15,6 +16,14 @@ public class UserController {
 
     public UserController(UserService service) {
         this.service = service;
+    }
+
+    @GetMapping("/findByEmail/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<ResponseEntity<User>> findByEmail(@PathVariable String email) {
+        return service.findByEmail(email)
+                .map(ResponseEntity::ok)
+                .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).build()));
     }
 
     @GetMapping("/list/active")

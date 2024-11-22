@@ -23,6 +23,11 @@ public class UserService {
         return repository.findByStatus(status);
     }
 
+    public Mono<User> findByEmail(String email) {
+        return repository.findByEmail(email)
+                .switchIfEmpty(Mono.error(new RuntimeException("User not found")));
+    }
+
     public Mono<User> save(User user) {
         return repository.save(user);
     }

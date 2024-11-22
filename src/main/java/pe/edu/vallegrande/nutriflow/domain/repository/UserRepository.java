@@ -7,4 +7,5 @@ import reactor.core.publisher.Mono;
 
 public interface UserRepository extends ReactiveCrudRepository<User, Long> {
     Flux<User> findByStatus(String status);
+    Mono<User> findByEmail(String email);
 }
