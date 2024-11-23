@@ -20,8 +20,8 @@ public class InstructionService {
         return repository.findByStatus(status);
     }
 
-    public Mono<Instruction> save(Instruction instruction) {
-        return repository.save(instruction);
+    public Flux<Instruction> save(Flux<Instruction> instruction) {
+        return repository.saveAll(instruction);
     }
 
     public Mono<Instruction> update(Long id, Instruction instruction) {

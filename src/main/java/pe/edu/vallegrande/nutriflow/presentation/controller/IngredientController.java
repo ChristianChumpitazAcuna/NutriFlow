@@ -31,7 +31,7 @@ public class IngredientController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Ingredient> saveIngredient(@RequestBody Ingredient ingredient) {
+    public Flux<Ingredient> saveIngredient(@RequestBody Flux<Ingredient> ingredient) {
         return service.save(ingredient);
     }
 

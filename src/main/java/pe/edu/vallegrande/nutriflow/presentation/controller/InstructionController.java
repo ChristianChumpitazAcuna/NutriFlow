@@ -31,7 +31,7 @@ public class InstructionController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Instruction> save(@RequestBody Instruction instruction) {
+    public Flux<Instruction> save(@RequestBody Flux<Instruction> instruction) {
         return service.save(instruction);
     }
 

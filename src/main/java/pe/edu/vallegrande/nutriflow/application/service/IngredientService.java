@@ -22,8 +22,8 @@ public class IngredientService {
         return repository.findByStatus(status);
     }
 
-    public Mono<Ingredient> save(Ingredient ingredient) {
-        return repository.save(ingredient);
+    public Flux<Ingredient> save(Flux<Ingredient> ingredient) {
+        return repository.saveAll(ingredient);
     }
 
     public Mono<Ingredient> update(Long id, Ingredient ingredient) {
