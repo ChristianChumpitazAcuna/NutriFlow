@@ -32,13 +32,13 @@ public class RecipeController {
 
     @GetMapping("/list/active/user/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<RecipeDto> listActiveByUser(@PathVariable Long id) {
+    public Flux<RecipeDto> listActiveByUser(@PathVariable Long id) {
         return service.findByUserAndStatus(id, "A");
     }
 
     @GetMapping("/list/inactive/user/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<RecipeDto> listInactiveByUser(@PathVariable Long id) {
+    public Flux<RecipeDto> listInactiveByUser(@PathVariable Long id) {
         return service.findByUserAndStatus(id, "I");
     }
 

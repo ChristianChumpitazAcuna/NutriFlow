@@ -42,7 +42,7 @@ public class RecipeService {
                 .flatMapMany(Flux::fromIterable);
     }
 
-    public Mono<RecipeDto> findByUserAndStatus(Long id, String status) {
+    public Flux<RecipeDto> findByUserAndStatus(Long id, String status) {
         return repository.findByUserIdAndStatus(id, status)
                 .flatMap(this::convertToDto);
     }
